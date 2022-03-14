@@ -7,4 +7,5 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
+
 puts "seeding done"
