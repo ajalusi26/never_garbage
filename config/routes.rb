@@ -1,0 +1,12 @@
+Rails.application.routes.draw do
+  resources :saved_items
+  resources :reviews
+  resources :follows
+  resources :categories
+  resources :items
+  resources :users
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  # Defines the root path route ("/")
+  # root "articles#index"
+end
