@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
     def login
-        user = User.find_by(username: params[:username])
+        user = User.find_by(name: params[:name])
         if user&.authenticate(params[:password])
       
             session[:current_user] = user.id
@@ -10,6 +10,8 @@ class SessionsController < ApplicationController
         else
             render json: {results: 'wrong password lmfaoo'}, status: :ok
         end
+
+       
     end
 
     #check if session exists
@@ -37,6 +39,6 @@ class SessionsController < ApplicationController
     private
 
     def route_params
-        params.permit(:id, :username, :password)
+        params.permit(:id, :name, :password)
     end
 end

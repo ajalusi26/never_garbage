@@ -8,4 +8,9 @@ class User < ApplicationRecord
     #creates user_instance.followings | returns all users the instance is following
     has_many :given_follows, foreign_key: :follower_id, class_name: "Follow"
     has_many :followings, through: :given_follows, source: :followed_user
+
+   
+
+    has_many :saved_items
+    has many :items, through: :saved_items
 end
