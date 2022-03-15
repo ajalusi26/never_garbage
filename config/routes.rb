@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_reviews
   resources :saved_items
   resources :reviews
   resources :follows

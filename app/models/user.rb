@@ -9,7 +9,10 @@ class User < ApplicationRecord
     has_many :given_follows, foreign_key: :follower_id, class_name: "Follow"
     has_many :followings, through: :given_follows, source: :followed_user
 
-   
+    has_many :user_reviews
+    has_many :reviews, through: :user_reviews
+
+    has_many :posted_items, foreign_key: :user_id, class_name: 'Item', dependent: :destroy
 
     has_many :saved_items
     has many :items, through: :saved_items

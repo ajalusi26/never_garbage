@@ -10,6 +10,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.string :description
       t.string :condition
       t.integer :price
+      t.boolean :sold
 
       t.timestamps
     end
