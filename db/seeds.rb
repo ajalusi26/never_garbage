@@ -8,17 +8,23 @@
 
 require 'rest-client'
 
+#user info
 user_data_fetch = RestClient.get "https://randomuser.me/api/?results=50&inc=name,picture,email,login&noinfo"
 user_data_fetch_array = JSON.parse(user_data_fetch)['results']
 
-user_zip_fetch = RestClient.get 'https://www.zipcodeapi.com/rest/DemoOnly003Q6AsvKVbYRRZr2lMG2nPGyiCMjaNlkBAmRsJmtNqTyxSCNN6vatwW/radius.json/33065/50/mile'
+#get random zip code
+user_zip_fetch = RestClient.get 'https://www.zipcodeapi.com/rest/DemoOnly00TI1Od5ISw7un38vLdKe0m4RU2n9w41ZHvnOpyG4XirUKoujCiCNtFs/radius.json/33065/50/mile'
 user_zip_fetch_array = JSON.parse(user_zip_fetch)['zip_codes'] 
+
+#category + item info
+category_data = RestClient.get 'https://fakestoreapi.com/products/categories'
+category_data_array = JSON.parse(category_data)
 
 
 User.create!(name: "AJ Jalusi", email: 'ajalusi26@gmail.com', profile_pic: 'https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png?w=640', password: "moshiachnow1" , zipcode: 33065, city: 'Coral Springs')
 
 user_data_fetch_array.each do |i|
-    name = i['name']['first'] + " "+ i['name']['last']
+    name = i['name']['first'] + " " + i['name']['last']
     email = i['email']
     profile_pic = i['picture']['medium']
     password = i['login']['password']
@@ -33,15 +39,43 @@ user_data_fetch_array.each do |i|
         password: password)
    end
 
+category_data_array.each do |i|
+    category = i 
+    new_category = Category.create!(name: category)
 
-Category.create(name: 'Electronics & Media')
-Category.create(name: 'Home & Garden')
-Category.create(name: 'Clothing, Shoes, & Accessories')
-Category.create(name: 'Baby & Kids')
-Category.create(name: 'Vehicles')
-Category.create(name: 'Sports & Outdoors')
-Category.create(name: 'Pet supplies')
-Category.create(name: 'Collectibles & Art')
-Category.create(name: 'Toys, Games, & Hobbies')
+    products_fetch = RestClient.get 'https://fakestoreapi.com/products'
+    product_data_array = JSON.parse(products_fetch)
 
+    
+    condition_array = ["New", "Used", "Like new"]
+ 
+
+    product_data_array.each do |product|
+    # category = new_category.id
+    condition = rand(0..2)
+    user = User.find(rand(1..50))
+    user_id = user.id
+    city = user.city
+    zipcode = user.zipcode
+    category_id = new_category.id
+        
+    image = product["image"]
+    name = product["title"]
+    description = product["description"]
+    price = product["price"]
+        Item.create!(
+            user_id: user_id,
+            category_id: category_id ,
+            zipcode: zipcode,
+            city: city,
+            image: image,
+            name: name, 
+            description: description,
+            condition: condition_array[condition],
+            price: price,
+            sold: false
+        )
+    end
+   
+end
 puts "seeding done"
