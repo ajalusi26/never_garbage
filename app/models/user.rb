@@ -20,4 +20,9 @@ class User < ApplicationRecord
 
     has_many :saved_items, dependent: :destroy
     # has many :items, through: :saved_items
+
+    validates :name, presence: true
+    validates :email, presence: true
+    validates :password, presence: true
+    validates :password, length: {minimum: 6}
 end

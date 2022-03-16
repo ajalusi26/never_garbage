@@ -1,14 +1,13 @@
 class SessionsController < ApplicationController
 
     def login
-        user = User.find_by(name: params[:name])
+        user = User.find_by(name: params[:name]) || User.find_by(email: params[:name])
         if user&.authenticate(params[:password])
-      
+
             session[:current_user] = user.id
-            
             render json: user, status: :ok            
         else
-            render json: {results: 'wrong password lmfaoo'}, status: :ok
+            render json: {results: 'wrong password lmfaoo'}, status: :unauthorized 
         end
 
        

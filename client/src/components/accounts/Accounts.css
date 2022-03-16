@@ -110,6 +110,15 @@ form input:focus::placeholder {
   color: rgb(255, 255, 255);
   font-size: 15px;
 }
+.errors-holder {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.errors {
+  color: red;
+  padding: 0px;
+  font-size: 18px;
+}
 .bg-bubbles {
   position: absolute;
   top: 0;

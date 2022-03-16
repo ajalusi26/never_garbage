@@ -7,6 +7,7 @@ function CreateAccount(){
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
+    const [errorMessage, setErrorMessage] = useState(false)
     const navigate = useNavigate()
 
     useEffect(()=>{
@@ -22,6 +23,39 @@ function CreateAccount(){
         })
     }, [])
 
+    function createAccount(e){
+        e.preventDefault()
+        let data = {
+            name: username, 
+            email: email, 
+            password: password
+        }
+
+        fetch('http://127.0.0.1:3000/users',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+        .then(r => r.json())
+        .then(data => {
+            if(data.errors){   
+                    let liList = document.querySelectorAll('li')
+                    liList.forEach(li => li.remove())
+                    data.errors.forEach(error => {
+                        let li = document.createElement('li')
+                        li.className = 'errors'
+                        li.textContent = error
+                        document.querySelector('ul').appendChild(li)
+                    })
+                    setErrorMessage(true)
+            }else{
+                navigate('/main-page')
+            }
+        })
+    }
+
     if(loaded){
         return(
             <div className="wrapper">
@@ -33,8 +67,10 @@ function CreateAccount(){
                     <input type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} />
                  
                     <input type="email" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} />
-                    <button type="submit" className='button-login'>Create </button>
+                    <button type="submit" className='button-login' onClick={createAccount}>Create </button>
                     <br></br>
+                    <br></br>
+                    <ul className='errors-holder'></ul>
                     <br></br>
                     <Link to={"/"} className="create-account">ALready have an account? Click here to Sign in</Link>
     

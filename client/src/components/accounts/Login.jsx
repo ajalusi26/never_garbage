@@ -9,10 +9,10 @@ function Login(){
     const navigate = useNavigate()
 
     useEffect(()=>{
-        fetch('/is_logged_in')
+        fetch('http://127.0.0.1:3000/is_logged_in')
         .then(r => r.json())
         .then(data => {
-            if(data.username){
+            if(data.name){
                 navigate('/main-page')
                 console.log(data)
             }else{
@@ -23,20 +23,52 @@ function Login(){
     }, [])
     
     function bg(){
-        let x = 1;
-        while (x <= 12){
-            let square = document.createElement('li')
+    //     let x = 1;
+    //     while (x <= 12){
+    //         let square = document.createElement('li')
 
-            square.style.left = `${x * 5}%`
-            square.style.width = `${x * 20}px`
-            square.style.height = `${x * 20}px`
-            square.style.animationDelay = `${x * 1}s`
-            square.style.animationDuration = `${x * 2.5}s`
+    //         square.style.left = `${x * 5}%`
+    //         square.style.width = `${x * 20}px`
+    //         square.style.height = `${x * 20}px`
+    //         square.style.animationDelay = `${x * 1}s`
+    //         square.style.animationDuration = `${x * 2.5}s`
 
 
-            document.querySelector('.bg-bubbles').appendChild(square)
-            x++
+    //         document.querySelector('.bg-bubbles').appendChild(square)
+    //         x++
+    //     }
+    }
+
+    function login(e){
+        e.preventDefault()
+        let loginData = {
+            name: username, 
+            password: password
         }
+        fetch('http://127.0.0.1:3000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(loginData),
+            })
+            .then(response => response.json())
+            .then(data => {
+            {
+                if(data.name){
+                    console.log(data)
+                   
+                   navigate('/main-page')
+                }
+                else{
+                    console.log(data)
+                    alert('Wrong username or password')
+                }  
+             
+            }
+        })
+        setPassword('')
+        setUsername('')
     }
 
     if (loaded){
@@ -47,10 +79,10 @@ function Login(){
             <div className="login-container">
                 <h2 >Sign in</h2>
                 <form >
-                    <input type="text" placeholder="Username" value={username} onChange={(e)=>setUsername(e.target.value)} />
+                    <input required type="text" placeholder="Username or Email" value={username} onChange={(e)=>setUsername(e.target.value)}  />
                     <br></br>
-                    <input type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} />
-                    <button type="submit" className='button-login'>Login</button>
+                    <input required type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} />
+                    <button type="submit" className='button-login' onClick={login}>Login</button>
                     <br></br>
                     <Link to={"/create-account"} className="create-account">Dont have an account? Click here to create one!</Link>
 
