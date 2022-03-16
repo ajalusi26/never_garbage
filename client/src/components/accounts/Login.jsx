@@ -9,7 +9,7 @@ function Login(){
     const navigate = useNavigate()
 
     useEffect(()=>{
-        fetch('http://127.0.0.1:3000/is_logged_in')
+        fetch('/is_logged_in')
         .then(r => r.json())
         .then(data => {
             if(data.username){
@@ -21,10 +21,28 @@ function Login(){
             }
         })
     }, [])
+    
+    function bg(){
+        let x = 1;
+        while (x <= 12){
+            let square = document.createElement('li')
 
+            square.style.left = `${x * 5}%`
+            square.style.width = `${x * 20}px`
+            square.style.height = `${x * 20}px`
+            square.style.animationDelay = `${x * 1}s`
+            square.style.animationDuration = `${x * 2.5}s`
+
+
+            document.querySelector('.bg-bubbles').appendChild(square)
+            x++
+        }
+    }
 
     if (loaded){
         return(
+           <>
+
             <div className="wrapper">
             <div className="login-container">
                 <h2 >Sign in</h2>
@@ -32,13 +50,19 @@ function Login(){
                     <input type="text" placeholder="Username" value={username} onChange={(e)=>setUsername(e.target.value)} />
                     <br></br>
                     <input type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} />
-                    <button type="submit" >Login</button>
-                    <Link to={"/create-account"} className="link">Dont have an account? Click here to create one!</Link>
+                    <button type="submit" className='button-login'>Login</button>
+                    <br></br>
+                    <Link to={"/create-account"} className="create-account">Dont have an account? Click here to create one!</Link>
+
                 </form>
             </div>
+            <ul className="bg-bubbles"> </ul>
             </div>
+            </>
         )
-    }else {return(<></>)}
+    }else {return(
+        <div className="wrapper"></div>
+    )}
 }
 
 export default Login
