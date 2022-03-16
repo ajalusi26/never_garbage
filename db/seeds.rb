@@ -51,7 +51,7 @@ category_data_array.each do |i|
  
 
     product_data_array.each do |product|
-    # category = new_category.id
+    
     condition = rand(0..2)
     user = User.find(rand(1..50))
     user_id = user.id
@@ -63,18 +63,21 @@ category_data_array.each do |i|
     name = product["title"]
     description = product["description"]
     price = product["price"]
-        Item.create!(
-            user_id: user_id,
-            category_id: category_id ,
-            zipcode: zipcode,
-            city: city,
-            image: image,
-            name: name, 
-            description: description,
-            condition: condition_array[condition],
-            price: price,
-            sold: false
-        )
+        if product["category"] == new_category.name 
+
+            Item.create!(
+                user_id: user_id,
+                category_id: category_id ,
+                zipcode: zipcode,
+                city: city,
+                image: image,
+                name: name, 
+                description: description,
+                condition: condition_array[condition],
+                price: price,
+                sold: false
+            )
+        end
     end
    
 end

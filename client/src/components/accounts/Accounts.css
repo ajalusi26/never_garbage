@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Shizuru&family=Source+Sans+Pro:wght@300&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  color: white;
+  position: relative;
+}
+
+.wrapper {
+  background-color: #00796b;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.login-container {
+  width: 600px;
+  padding: 80px o;
+  height: 400;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 25px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  overflow: hidden;
+  backdrop-filter: blur(0.9rem);
+}
+.login-container h2 {
+  font-size: 2.5rem;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+  font-weight: bold;
+}
+form {
+  padding: 20px 0;
+  position: relative;
+  z-index: 2;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+}
+
+form input {
+  appearance: none;
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 250px;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  display: block;
+  text-align: center;
+  font: size 18px;
+  color: #009688;
+  transition-duration: 0.25s;
+  font-weight: 300;
+}
+form input::placeholder {
+  color: #fff;
+  text-align: center;
+}
+form input:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+form input:focus {
+  background-color: white;
+  width: 300px;
+}
+form input:focus::placeholder {
+  color: #009688;
+}
