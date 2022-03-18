@@ -11,6 +11,7 @@ const itemsSlice = createSlice({
     name: "items",
     initialState: {
       items: [], // array of items
+      itemsDisplayed: [],
       current_user: [],
       zipcode: [],
       zipcodes_in_radius: [],
@@ -24,6 +25,9 @@ const itemsSlice = createSlice({
       itemUpdated(state, action) {
         const item = state.items.find((item) => item.id === action.payload.id);
         item = action.payload;
+      },
+      itemsToDisplay(state, action){
+        state.itemsDisplayed = action.payload
       },
       userAdded(state, action) {
           state.current_user.push(action.payload);
@@ -47,7 +51,7 @@ const itemsSlice = createSlice({
     },
   });
   
-  export const { itemAdded, itemUpdated,userAdded, zipAdded, zipRadius} = itemsSlice.actions;
+  export const { itemAdded, itemUpdated,userAdded, zipAdded, zipRadius, itemsToDisplay} = itemsSlice.actions;
   
   export default itemsSlice.reducer;
   

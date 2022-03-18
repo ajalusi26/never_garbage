@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2022_03_15_002333) do
   create_table "items", force: :cascade do |t|
     t.integer "user_id"
     t.integer "category_id"
+    t.string "category_name"
     t.integer "zipcode"
     t.string "city"
     t.string "image"

@@ -58,7 +58,7 @@ category_data_array.each do |i|
     city = user.city
     zipcode = user.zipcode
     category_id = new_category.id
-        
+    category_name = new_category.name
     image = product["image"]
     name = product["title"]
     description = product["description"]
@@ -68,6 +68,7 @@ category_data_array.each do |i|
             Item.create!(
                 user_id: user_id,
                 category_id: category_id ,
+                category_name: category_name,
                 zipcode: zipcode,
                 city: city,
                 image: image,

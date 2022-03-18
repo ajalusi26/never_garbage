@@ -1,4 +1,4 @@
-import {itemAdded} from '../../../redux/itemSlice'
+import {itemAdded, itemsToDisplay} from '../../../redux/itemSlice'
 import {useSelector, useDispatch} from 'react-redux'
 import {useEffect} from 'react'
 
@@ -10,7 +10,10 @@ function ItemContainer(){
     useEffect(() => {
         fetch('/items')
         .then(r => r.json())
-        .then(data => dispatch(itemAdded(data)))
+        .then(data => {
+            dispatch(itemAdded(data))
+            dispatch(itemsToDisplay(data))
+        })
       }, [dispatch]);
 
     return(
