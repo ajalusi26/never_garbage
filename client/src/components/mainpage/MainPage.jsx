@@ -11,14 +11,22 @@ import './MainPage.css'
 
 
 function MainPage(){
+    const [zipcode, setZipcode] = useState('')
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
     useEffect(()=>{
         fetch('is_logged_in',)
         .then(r => r.json())
         .then(data => {
             if(data.name){
                 dispatch(userAdded(data))
+                navigator.geolocation.getCurrentPosition(function(position){
+                    fetch( "https://maps.googleapis.com/maps/api/geocode/json?latlng="+ position.coords.latitude + "," + position.coords.longitude + '&key=AIzaSyAhjCcVMhl4Sc6MMootJ--iyHifcJcwBX8')
+                    .then(r=> r.json())
+                    .then(data => setZipcode(data.results[0].address_components[7].long_name))
+                })
+                
             }else{
                 navigate('/')
             }

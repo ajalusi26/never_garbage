@@ -36,8 +36,10 @@
 
 .company-name {
   color: #00796b;
+  padding-left: 100px;
   float: left;
   font-size: 30px;
+  letter-spacing: 7px;
 }
 
 nav {
@@ -49,12 +51,14 @@ nav {
 .nav-links {
   display: flex;
   justify-content: space-around;
-  width: 40%;
+  width: 60%;
   font-weight: 800;
   color: #00796b;
   text-decoration: none;
   letter-spacing: 3px;
   list-style: none;
+  padding-left: 400px;
+  padding-right: 0;
 }
 .nav-links li:hover {
   font-weight: 700;

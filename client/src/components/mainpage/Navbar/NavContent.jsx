@@ -25,6 +25,7 @@ function NavContent(){
             </div>
             <ul className="nav-links">
                 <li>Profile</li>
+                <li>Sell</li>
                 <li onClick={newState}>Saved Items</li>
                 <li>Messages</li>
                 <li onClick={logout}>Logout</li>
