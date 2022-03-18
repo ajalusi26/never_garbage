@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
     def login
         user = User.find_by(name: params[:name]) || User.find_by(email: params[:name])
+        
         if user&.authenticate(params[:password])
 
             session[:current_user] = user.id

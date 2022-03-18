@@ -20,7 +20,6 @@ Bundler.require(*Rails.groups)
 
 module NeverGarbage
   class Application < Rails::Application
-    class Application < Rails::Application
       config.load_defaults 6.1
   
       # This is set in apps generated with the --api flag, and removes session/cookie middleware
@@ -33,6 +32,5 @@ module NeverGarbage
   
       # Use SameSite=Strict for all cookies to help protect against CSRF
       # config.action_dispatch.cookies_same_site_protection = :strict
-    end
   end
 end

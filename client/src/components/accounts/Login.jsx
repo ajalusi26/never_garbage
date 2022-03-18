@@ -9,7 +9,7 @@ function Login(){
     const navigate = useNavigate()
 
     useEffect(()=>{
-        fetch('http://127.0.0.1:3000/is_logged_in')
+        fetch('/is_logged_in')
         .then(r => r.json())
         .then(data => {
             if(data.name){
@@ -45,7 +45,7 @@ function Login(){
             name: username, 
             password: password
         }
-        fetch('http://127.0.0.1:3000/login', {
+        fetch('/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

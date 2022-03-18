@@ -31,7 +31,7 @@ function CreateAccount(){
             password: password
         }
 
-        fetch('http://127.0.0.1:3000/users',{
+        fetch('/users',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
