@@ -12,6 +12,8 @@ const itemsSlice = createSlice({
     initialState: {
       items: [], // array of items
       current_user: [],
+      zipcode: [],
+      zipcodes_in_radius: [],
       status: "idle", // loading state
     },
     reducers: {
@@ -25,6 +27,12 @@ const itemsSlice = createSlice({
       },
       userAdded(state, action) {
           state.current_user.push(action.payload);
+      },
+      zipAdded(state, action) {
+        state.zipcode.push(action.payload)
+      },
+      zipRadius(state, action) {
+        state.zipcodes_in_radius.push(action.payload)
       }
     },
     extraReducers: {
@@ -39,7 +47,7 @@ const itemsSlice = createSlice({
     },
   });
   
-  export const { itemAdded, itemUpdated,userAdded } = itemsSlice.actions;
+  export const { itemAdded, itemUpdated,userAdded, zipAdded, zipRadius} = itemsSlice.actions;
   
   export default itemsSlice.reducer;
   

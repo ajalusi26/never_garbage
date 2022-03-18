@@ -13,7 +13,7 @@ user_data_fetch = RestClient.get "https://randomuser.me/api/?results=50&inc=name
 user_data_fetch_array = JSON.parse(user_data_fetch)['results']
 
 #get random zip code
-user_zip_fetch = RestClient.get 'https://www.zipcodeapi.com/rest/DemoOnly00TI1Od5ISw7un38vLdKe0m4RU2n9w41ZHvnOpyG4XirUKoujCiCNtFs/radius.json/33065/50/mile'
+user_zip_fetch = RestClient.get 'https://www.zipcodeapi.com/rest/VELHsIXaIJu26Ff204Adp8EgonZg8My74Is0mc6reILdtD0FRm8ZxZ9SyfkaiPLU/radius.json/33065/30/mile'
 user_zip_fetch_array = JSON.parse(user_zip_fetch)['zip_codes'] 
 
 #category + item info
@@ -28,7 +28,7 @@ user_data_fetch_array.each do |i|
     email = i['email']
     profile_pic = i['picture']['medium']
     password = i['login']['password']
-    zip = rand(0..283)
+    zip = rand(0..160)
 
     User.create!(
         name: name, 
@@ -36,7 +36,7 @@ user_data_fetch_array.each do |i|
         profile_pic: profile_pic,
         zipcode: user_zip_fetch_array[zip]['zip_code'].to_i,
         city: user_zip_fetch_array[zip]['city'],
-        password: password)
+        password: "password")
    end
 
 category_data_array.each do |i|

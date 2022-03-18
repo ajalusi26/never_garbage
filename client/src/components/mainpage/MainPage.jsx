@@ -1,17 +1,18 @@
 import React from "react"
 import {useState, useEffect} from 'react'
-import {fetchItems, userAdded} from '../../redux/itemSlice'
+import {fetchItems, userAdded, zipAdded} from '../../redux/itemSlice'
 import {useSelector, useDispatch} from 'react-redux'
 import { useNavigate } from "react-router-dom"
 //Components
 import Navbar from './Navbar/Navbar'
 import ItemContainer from './Content/ItemContainer'
+import Filters from './Navbar/Filters'
 //CSS
 import './MainPage.css'
 
 
 function MainPage(){
-    const [zipcode, setZipcode] = useState('')
+    
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -19,24 +20,28 @@ function MainPage(){
         fetch('is_logged_in',)
         .then(r => r.json())
         .then(data => {
-            if(data.name){
+            if(data){
                 dispatch(userAdded(data))
+             
                 navigator.geolocation.getCurrentPosition(function(position){
                     fetch( "https://maps.googleapis.com/maps/api/geocode/json?latlng="+ position.coords.latitude + "," + position.coords.longitude + '&key=AIzaSyAhjCcVMhl4Sc6MMootJ--iyHifcJcwBX8')
                     .then(r=> r.json())
-                    .then(data => setZipcode(data.results[0].address_components[7].long_name))
-                })
-                
+                    .then(data =>{
+                        dispatch(zipAdded(data.results[0].address_components[7].long_name))
+                        console.log('zip', data.results[0].address_components[7].long_name)
+                    })
+                })      
             }else{
                 navigate('/')
             }
         })
-    })
+    }, [])
 
     return (
         <>
         <Navbar/>
         <div className="app">
+            <Filters/>
            <ItemContainer/>
         </div>
         </>

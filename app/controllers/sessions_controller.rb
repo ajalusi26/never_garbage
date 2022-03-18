@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+    
+    require 'rest-client'
 
     def login
         user = User.find_by(name: params[:name]) || User.find_by(email: params[:name])
@@ -19,9 +21,10 @@ class SessionsController < ApplicationController
     def is_logged_in
         
         if session[:current_user]
-          
+            
             user = User.find(session[:current_user])
-            render json: user, status: :ok
+          
+            render json:user, status: :ok
         else
            
             render json: {status: "no one logged in"}
