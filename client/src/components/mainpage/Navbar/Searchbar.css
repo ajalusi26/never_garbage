@@ -1,0 +1,82 @@
+.nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: transparent;
+  align-items: center;
+  min-height: 6vh;
+}
+
+.search {
+  margin-left: 60px;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  padding: 0.4rem 0;
+  padding-right: 25px;
+  /* border-radius: 50px; */
+  /* border-right: 2px solid #246083; */
+  /* border-color: #246083; */
+  font-size: 1rem;
+  color: #246083;
+  /* height: 39px; */
+}
+.search:focus {
+  outline: none;
+}
+.search::placeholder {
+  color: #ffffff;
+  text-align: center;
+}
+.searchbar-holder {
+  border: 2px solid #246083;
+  /* background-color: black; */
+  width: 620px;
+  height: 40px;
+  border-radius: 50px;
+}
+
+.company-name {
+  color: #246083;
+  float: left;
+  font-size: 30px;
+}
+
+nav {
+  margin-bottom: 50px;
+  margin-top: 10px;
+  border-bottom: 2px solid #246083;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  width: 40%;
+  font-weight: 800;
+  color: #246083;
+  text-decoration: none;
+  letter-spacing: 3px;
+  list-style: none;
+}
+.nav-links li:hover {
+  font-weight: 700;
+}
+
+.nav-links:hover {
+  cursor: pointer;
+}
+
+.search-bttn {
+  /* border-radius: 30px; */
+  height: 38px;
+  border: none;
+  background-color: transparent;
+  color: #246083;
+  font-size: 18px;
+  font-weight: 500;
+  padding-left: 10px;
+  /* border-left: 1px solid #246083; */
+}
+.search-bttn:hover {
+  cursor: pointer;
+  /* background-color: #246083; */
+  /* color: #ffffff; */
+}

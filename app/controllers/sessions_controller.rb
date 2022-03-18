@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
         if user&.authenticate(params[:password])
 
             session[:current_user] = user.id
+          
             render json: user, status: :ok            
         else
             render json: {results: 'wrong password lmfaoo'}, status: :unauthorized 
@@ -24,9 +25,7 @@ class SessionsController < ApplicationController
            
             render json: {status: "no one logged in"}
         end
-        
-     
-       
+          
     end
     
     
