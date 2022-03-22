@@ -22,13 +22,12 @@ function MainPage(){
         .then(data => {
             if(data){
                 dispatch(userAdded(data))
-             
                 navigator.geolocation.getCurrentPosition(function(position){
                     fetch( "https://maps.googleapis.com/maps/api/geocode/json?latlng="+ position.coords.latitude + "," + position.coords.longitude + '&key=AIzaSyAhjCcVMhl4Sc6MMootJ--iyHifcJcwBX8')
                     .then(r=> r.json())
-                    .then(data =>{
-                        dispatch(zipAdded(data.results[0].address_components[7].long_name))
-                        console.log('zip', data.results[0].address_components[7].long_name)
+                    .then(data => {
+                        dispatch(zipAdded(data.results[0].address_components[data.results[0].address_components.length - 1 ].long_name))
+                        console.log(data.results[0].address_components[data.results[0].address_components.length - 1 ].long_name)
                     })
                 })      
             }else{
