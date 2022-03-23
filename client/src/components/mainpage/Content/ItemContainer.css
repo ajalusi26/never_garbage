@@ -1,0 +1,16 @@
+.item-container {
+  display: flex;
+  /* border-right: 1px solid var(--twitter-background); */
+  width: 1200px;
+
+  margin: auto;
+  /* min-width: fit-content; */
+  overflow-y: scroll;
+  /* height: 665px; */
+  align-self: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.item-container::-webkit-scrollbar {
+  display: none;
+}

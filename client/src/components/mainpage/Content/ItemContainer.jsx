@@ -2,8 +2,11 @@ import {itemAdded, itemsToDisplay} from '../../../redux/itemSlice'
 import {useSelector, useDispatch} from 'react-redux'
 import {useEffect} from 'react'
 
+import ItemCard from './ItemCard'
+import './ItemContainer.css'
+
 function ItemContainer(){
-    const items = useSelector((state)=> state.items.items)
+    const items = useSelector((state)=> state.items.itemsDisplayed)
     const user = useSelector((state)=> state.items.current_user)
     const dispatch = useDispatch();
 
@@ -17,9 +20,8 @@ function ItemContainer(){
       }, [dispatch]);
 
     return(
-        <div>
-            {console.log("items",items)}
-            {console.log('user', user)}
+        <div className="item-container">
+            {items.map(item => <ItemCard key={item.id} item={item}/>)}
         </div>
     )
 }

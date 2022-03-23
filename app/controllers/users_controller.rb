@@ -10,5 +10,15 @@ class UsersController < ApplicationController
     def show
         render json: User.find(params[:id])
     end
-   
+
+    def change_password
+        user = User.find_by(name: params[:name]) || User.find_by(email: params[:name])
+        user.update(password: params[:newPassword])
+        render json: user, status: :ok
+    end
+    def destroy
+        user = User.find(params[:id])
+        user.destroy
+        session.delete(:current_user)
+    end
 end

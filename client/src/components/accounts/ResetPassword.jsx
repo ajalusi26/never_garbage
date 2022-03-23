@@ -2,9 +2,10 @@ import './Accounts.css'
 import {useState, useEffect} from 'react'
 import {Link, useNavigate} from "react-router-dom"
 
-function Login(){
+function ResetPassword(){
     const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
+ 
+    const [newPassword, setNewPassword] = useState("")
     const [loaded, setLoaded] = useState(false)
     const navigate = useNavigate()
 
@@ -23,13 +24,13 @@ function Login(){
     }, [])
     
 
-    function login(e){
+    function reset(e){
         e.preventDefault()
         let loginData = {
             name: username, 
-            password: password
+            newPassword: newPassword
         }
-        fetch('/login', {
+        fetch('/change_password', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -40,18 +41,16 @@ function Login(){
             .then(data => {
             {
                 if(data.name){
-                    console.log(data)
-                   
+                    console.log('new user', data)
                    navigate('/main-page')
                 }
                 else{
-                    console.log(data)
                     alert('Wrong username or password')
                 }  
              
             }
         })
-        setPassword('')
+        setNewPassword('')
         setUsername('')
     }
 
@@ -61,17 +60,15 @@ function Login(){
 
             <div className="wrapper">
             <div className="login-container">
-                <h2 >Sign in</h2>
+                <h2 >Reset Password</h2>
                 <form >
                     <input required type="text" placeholder="Username or Email" value={username} onChange={(e)=>setUsername(e.target.value)}  />
                     <br></br>
-                    <input required type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} />
-                    <button type="submit" className='button-login' onClick={login}>Login</button>
+                    <input required type="password" placeholder="new Password" value={newPassword} onChange={(e)=>setNewPassword(e.target.value)} />
+                    <button type="submit" className='button-login' onClick={reset}>RESET</button>
                     <br></br>
-                    <Link to={"/create-account"} className="create-account">Dont have an account? Click here to create one!</Link>
-                    <br></br>
-                    <br></br>
-                    <Link to={"/reset-password"} className="create-account">Forgot your password? Click here to reset it!</Link>
+                    {/* <Link to={"/create-account"} className="create-account">Dont have an account? Click here to create one!</Link> */}
+
                 </form>
             </div>
             <ul className="bg-bubbles"> </ul>
@@ -83,4 +80,4 @@ function Login(){
     )}
 }
 
-export default Login
+export default ResetPassword

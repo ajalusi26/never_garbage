@@ -30,7 +30,7 @@ const itemsSlice = createSlice({
         state.itemsDisplayed = action.payload
       },
       userAdded(state, action) {
-          state.current_user.push(action.payload);
+          state.current_user = action.payload;
       },
       zipAdded(state, action) {
         state.zipcode.push(action.payload)

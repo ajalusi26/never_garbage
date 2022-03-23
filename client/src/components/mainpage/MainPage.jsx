@@ -4,9 +4,9 @@ import {fetchItems, userAdded, zipAdded} from '../../redux/itemSlice'
 import {useSelector, useDispatch} from 'react-redux'
 import { useNavigate } from "react-router-dom"
 //Components
-import Navbar from './Navbar/Navbar'
+import Navbar from '../Navbar/Navbar'
 import ItemContainer from './Content/ItemContainer'
-import Filters from './Navbar/Filters'
+import Filters from '../Navbar/Filters'
 //CSS
 import './MainPage.css'
 
@@ -39,10 +39,8 @@ function MainPage(){
     return (
         <>
         <Navbar/>
-        <div className="app">
-            <Filters/>
-           <ItemContainer/>
-        </div>
+        <Filters/>
+        <ItemContainer/>
         </>
     )
 }

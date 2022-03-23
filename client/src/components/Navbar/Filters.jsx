@@ -1,7 +1,7 @@
 import React from "react";
 import {useState} from 'react'
 import './Searchbar.css'
-import {zipRadius, itemsToDisplay} from '../../../redux/itemSlice'
+import {zipRadius, itemsToDisplay} from '../../redux/itemSlice'
 import {useSelector, useDispatch} from 'react-redux'
 
 
@@ -16,15 +16,18 @@ function Filters(){
     let items = useSelector((state) => state.items.itemsDisplayed)
     
     function categoryFilter(e){
-        setCategory(e.target.value)
-        // console.log(items)
-        let data = allItems[0].filter(i => i.category_name === e.target.value)
-        dispatch(itemsToDisplay(data))
-        // console.log("data",data)
+        if(e.target.value === "none"){
+            dispatch(itemsToDisplay(allItems[0]))
+        }else{
+            setCategory(e.target.value)
+            let data = allItems[0].filter(i => i.category_name === e.target.value)
+            dispatch(itemsToDisplay(data))
+        }
     }
     function distance(e){
         if(e.target.value === "none"){
-            dispatch(itemsToDisplay(allItems))
+            let filteredData = allItems[0].filter(i => i.category_name === category) 
+            dispatch(itemsToDisplay(filteredData))
         }else{
         let data = {
             distance: e.target.value, 
@@ -59,7 +62,7 @@ function Filters(){
                 <option value="30">Within 30 miles</option>
             </select>
             <select name="categories" className='dropdown' onChange={categoryFilter} >
-                <option value=""> Filter by category</option>
+                <option value="none"> Filter by category</option>
                 <option value="electronics">Electronics</option>
                 <option value="jewelery">Jewelery</option>
                 <option value="men's clothing">Men's clothing</option>

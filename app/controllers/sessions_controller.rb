@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
     
-    require 'rest-client'
+    
 
     def login
         user = User.find_by(name: params[:name]) || User.find_by(email: params[:name])

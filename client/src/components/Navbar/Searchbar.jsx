@@ -1,7 +1,7 @@
 import React from "react";
 import {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { itemsToDisplay } from '../../../redux/itemSlice';
+import { itemsToDisplay } from '../../redux/itemSlice';
 import './Searchbar.css'
 
 
