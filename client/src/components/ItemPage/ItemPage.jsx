@@ -38,7 +38,7 @@ function ItemPage(){
         .then(data => {
            setRelatedItems(data.items)
            setIsSaved(data.saved)
-           console.log(data)
+           console.log("i",data)
         })
     }, [])
 

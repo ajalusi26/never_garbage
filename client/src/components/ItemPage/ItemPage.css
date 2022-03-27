@@ -42,6 +42,8 @@
   color: black;
   margin-left: 50px;
   margin-right: 150px;
+  line-height: 40px;
+  font-weight: 500;
 }
 
 .item-page-image {
@@ -192,6 +194,7 @@
   margin-top: 50px;
   margin-left: 100px;
   margin-right: 200px;
+  padding-bottom: 200px;
 }
 .related {
   margin-left: 120px;
