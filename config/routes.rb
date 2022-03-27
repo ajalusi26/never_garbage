@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#logout'
   post '/items_in_radius', to: 'items#items_in_radius'
   post '/change_password', to: 'users#change_password'
+  post '/related_items', to: 'items#related_items'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

@@ -35,6 +35,7 @@ user_data_fetch_array.each do |i|
         email: email,
         profile_pic: profile_pic,
         zipcode: user_zip_fetch_array[zip]['zip_code'].to_i,
+        state: user_zip_fetch_array[zip]['state'],
         city: user_zip_fetch_array[zip]['city'],
         password: "password")
    end

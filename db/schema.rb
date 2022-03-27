@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2022_03_15_002333) do
     t.integer "category_id"
     t.string "category_name"
     t.integer "zipcode"
+    t.string "state"
     t.string "city"
     t.string "image"
     t.string "name"
@@ -72,6 +73,7 @@ ActiveRecord::Schema.define(version: 2022_03_15_002333) do
     t.string "password_digest"
     t.integer "zipcode"
     t.string "city"
+    t.string "state"
     t.string "profile_pic"
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false

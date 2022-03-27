@@ -9,14 +9,16 @@ function ItemCard({item}){
 
     function itemPage(){
     localStorage.setItem("item", item.id)
+    {console.log('hi')}
     navigate('/item-page')
+    window.location.reload()
     }
 
     return(
         <div className="card" onClick={itemPage}>
             
            <img src={item.image} className="image"></img>
-           <h1 className="item-name">{item.name}</h1>
+           <h1 className="item-name">{item.short_name}</h1>
            <div className="card-text">
             <p>${item.price}</p>
             <p>{item.city}, {item.zipcode}</p>

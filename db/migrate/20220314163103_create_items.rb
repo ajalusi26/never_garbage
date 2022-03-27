@@ -5,6 +5,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.integer :category_id
       t.string :category_name
       t.integer :zipcode
+      t.string :state
       t.string :city
       t.string :image
       t.string :name

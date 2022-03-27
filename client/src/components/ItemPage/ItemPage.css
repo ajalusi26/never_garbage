@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans:wght@600&family=Roboto&family=Shizuru&family=Source+Sans+Pro:wght@300&display=swap");
+
+.image-and-description-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 200px;
+}
+
+.image-container {
+  margin-top: 150px;
+  /* margin-left: 200px; */
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  width: 1000px;
+  background-color: rgb(250, 246, 246);
+
+  align-content: center;
+  border: solid 1px rgb(219, 218, 218);
+  border-radius: 10px;
+}
+.description-container {
+  /* margin-top: 50px; */
+  background-color: white;
+  border-radius: 10px;
+  border: solid 1px rgb(219, 218, 218);
+  /* background-color: aliceblue; */
+  display: flex;
+  flex-direction: column;
+  height: 100%; /*EDIT*/
+  width: 1000px;
+  padding-bottom: 75px;
+}
+.description-h1 {
+  margin-top: 75px;
+  color: black;
+  margin-left: 50px;
+}
+.description {
+  margin-top: 30px;
+  color: black;
+  margin-left: 50px;
+  margin-right: 150px;
+}
+
+.item-page-image {
+  width: 500px;
+  height: 400px;
+  align-self: center;
+  margin: auto;
+}
+/* .item-page-image:active {
+  width: 600px;
+  height: 600px;
+  transition-duration: 0.25s;
+} */
+.name-and-owner {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 1000px;
+  right: 0;
+  margin-right: 50px;
+  margin-left: 50px;
+  margin-top: 150px;
+
+  /* background-color: grey; */
+}
+.top-container {
+  width: 90vw;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  /* padding-bottom: 200px; */
+}
+.hr {
+  margin: 40px;
+  margin-bottom: 0;
+  color: rgb(0, 0, 0);
+  /* : solid 0.2px black; */
+}
+.item-name-big {
+  font-size: 30px;
+  font-weight: 700;
+  /* text-align: center; */
+  margin-left: 30px;
+  color: black;
+  top: 0;
+  margin-top: 40px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.item-price-big {
+  margin: 30px;
+  margin-bottom: 0;
+  font-size: 30px;
+  font-weight: 1000;
+  color: black;
+  font-family: "Open Sans", sans-serif;
+}
+
+.info {
+  margin-top: 10px;
+  margin-left: 30px;
+  color: black;
+  font-size: 20px;
+  /* font-family: "Open Sans", sans-serif; */
+  font-weight: 700;
+}
+
+.condition {
+  margin-top: 30px;
+}
+
+.itemPage-bttn {
+  margin-top: 15px;
+  width: 70%;
+  height: 50px;
+  border-radius: 30px;
+  border: none;
+  align-self: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  background-color: rgba(0, 168, 126, 255);
+}
+.itemPage-bttn:hover {
+  color: rgba(0, 168, 126, 255);
+  background-color: white;
+  border: solid 1px rgba(0, 168, 126, 255);
+  cursor: pointer;
+}
+
+.seller-info {
+  align-self: center;
+  width: 70%;
+  height: 80px;
+  border-radius: 50px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.seller-info:hover {
+  border: solid 1px black;
+  background-color: rgb(249, 247, 249);
+  cursor: pointer;
+}
+.seller-name-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+.seller-name {
+  color: black;
+  font-size: 18px;
+  font-weight: 700px;
+  margin: auto;
+  text-align: center;
+  top: 0;
+  margin-left: 20px;
+}
+.seller-location {
+  color: black;
+  font-size: 15px;
+  font-weight: 500px;
+  margin: auto;
+  text-align: center;
+  top: 0;
+  margin-left: 20px;
+}
+.inner-seller-info {
+  /* margin-top: 5px; */
+  display: flex;
+  flex-direction: row;
+}
+.seller-pfp {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  /* margin-left: 30px; */
+  margin: 0 auto;
+}
+.description-container {
+  top: 0;
+  margin: 0;
+}
+.related-items {
+  margin-top: 50px;
+  margin-left: 100px;
+  margin-right: 200px;
+}
+.related {
+  margin-left: 120px;
+  color: black;
+  margin-bottom: 50px;
+}
+
+.related-items-holder {
+  display: flex;
+  /* border-right: 1px solid var(--twitter-background); */
+  /* width: 1200px; */
+
+  margin: auto;
+  /* min-width: fit-content; */
+  overflow-y: scroll;
+  /* height: 665px; */
+  align-self: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.related-items-holder::-webkit-scrollbar {
+  display: none;
+}

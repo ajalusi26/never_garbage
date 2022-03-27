@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :password_digest
       t.integer :zipcode
       t.string :city
+      t.string :state
       t.string :profile_pic
       t.integer :rating
 
