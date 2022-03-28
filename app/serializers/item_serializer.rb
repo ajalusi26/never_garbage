@@ -6,4 +6,9 @@ class ItemSerializer < ActiveModel::Serializer
   def short_name
     "#{object.name[0...30]}..."
   end
+
+  
+
+
+
 end
