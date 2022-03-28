@@ -41,7 +41,7 @@ function Login(){
             {
                 if(data.name){
                     console.log(data)
-                   
+                   localStorage.setItem('current_user', data.id)
                    navigate('/main-page')
                 }
                 else{

@@ -21,7 +21,7 @@ category_data = RestClient.get 'https://fakestoreapi.com/products/categories'
 category_data_array = JSON.parse(category_data)
 
 
-User.create!(name: "AJ Jalusi", email: 'ajalusi26@gmail.com', profile_pic: 'https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png?w=640', password: "moshiachnow1" , zipcode: 33065, city: 'Coral Springs')
+User.create!(name: "AJ Jalusi", email: 'ajalusi26@gmail.com', profile_pic: 'https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png?w=640', password: "moshiachnow1" , zipcode: 33065, city: 'Coral Springs', state: "FL")
 
 user_data_fetch_array.each do |i|
     name = i['name']['first'] + " " + i['name']['last']
@@ -54,7 +54,7 @@ category_data_array.each do |i|
     product_data_array.each do |product|
     
     condition = rand(0..2)
-    user = User.find(rand(1..50))
+    user = User.find(rand(2..10))
     user_id = user.id
     city = user.city
     zipcode = user.zipcode

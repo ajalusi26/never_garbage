@@ -8,7 +8,13 @@ class UsersController < ApplicationController
         end
     end
     def show
-        render json: User.find(params[:id])
+        user_session = session[:current_user]
+        render json: User.find(params[:id]) , serializer: GetOtherProfileSerializer , status: :ok
+    end
+
+    def user_profile
+        user = User.find(session[:current_user])
+        render json: user, status: :ok
     end
 
     def change_password

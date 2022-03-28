@@ -54,7 +54,7 @@ nav {
 .nav-links {
   display: flex;
   justify-content: space-around;
-  width: 70%;
+  width: 50%;
   font-weight: 800;
   color: #00796b;
   text-decoration: none;

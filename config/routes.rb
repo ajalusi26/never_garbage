@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post '/items_in_radius', to: 'items#items_in_radius'
   post '/change_password', to: 'users#change_password'
   post '/related_items', to: 'items#related_items'
+  get '/user_profile', to: 'users#user_profile'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

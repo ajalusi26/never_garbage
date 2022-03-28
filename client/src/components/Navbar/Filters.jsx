@@ -7,7 +7,7 @@ import {useSelector, useDispatch} from 'react-redux'
 
 function Filters(){
 
-    const [category, setCategory] = useState('')
+    const [category, setCategory] = useState('none')
 
     const userZip = useSelector((state) => state.items.zipcode)
     const zipRadius = useSelector((state) => state.items.zipcodes_in_radius)
@@ -17,6 +17,7 @@ function Filters(){
     
     function categoryFilter(e){
         if(e.target.value === "none"){
+            setCategory(e.target.value)
             dispatch(itemsToDisplay(allItems[0]))
         }else{
             setCategory(e.target.value)
@@ -26,8 +27,12 @@ function Filters(){
     }
     function distance(e){
         if(e.target.value === "none"){
-            let filteredData = allItems[0].filter(i => i.category_name === category) 
-            dispatch(itemsToDisplay(filteredData))
+            if(category !== "none"){
+                let filteredData = allItems[0].filter(i => i.category_name === category) 
+                dispatch(itemsToDisplay(filteredData))
+            }else{
+                dispatch(itemsToDisplay(allItems[0]))
+            }
         }else{
         let data = {
             distance: e.target.value, 
@@ -42,7 +47,7 @@ function Filters(){
         })
         .then(r => r.json())
         .then(data => {
-            if(category != ""){
+            if(category !== "none"){
                 let filteredData = data.filter(i => i.category_name === category)
                 dispatch(itemsToDisplay(filteredData))
             }else{

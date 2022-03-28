@@ -14,6 +14,7 @@ class ItemsController < ApplicationController
 
         is_saved = SavedItem.exists?(item_id: params[:item_id], user_id: session[:current_user])
         category = Item.find(params[:item_id]).category
+        
         render json: {items: category.items, saved: is_saved}, status: :ok
     end
 

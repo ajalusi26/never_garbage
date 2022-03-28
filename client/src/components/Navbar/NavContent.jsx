@@ -3,7 +3,7 @@ import './Searchbar.css'
 import {useNavigate} from 'react-router-dom'
 
 
-import {fetchItems, itemAdded} from '../../redux/itemSlice'
+// import {fetchItems, itemAdded} from '../../redux/itemSlice'
 import {useSelector, useDispatch} from 'react-redux'
 
 function NavContent(){
@@ -24,8 +24,11 @@ function NavContent(){
         fetch(`/users/${user.id}` , {
      method: 'DELETE',}
      ).then(r => navigate('/'))
-
+    
 console.log(user.id)
+    }
+    function profile(){
+        navigate('/profile')
     }
     return(
         <nav className="nav">
@@ -33,12 +36,12 @@ console.log(user.id)
                 <h4 >Never Trash</h4>
             </div>
             <ul className="nav-links">
-                <li>Profile</li>
-                <li>Selling</li>
+                <li onClick={profile}>Profile</li>
+                {/* <li>Selling</li> */}
                 <li >Saved Items</li>
                 <li>Messages</li>
                 <li onClick={logout}>Logout</li>
-                <li onClick={deleteAccount}>Delete account</li>
+                {/* <li onClick={deleteAccount}>Delete account</li> */}
             </ul>
         </nav>
     )

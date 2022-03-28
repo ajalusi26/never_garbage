@@ -1,5 +1,6 @@
 import React from "react";
 import {useEffect, useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import NavContent from '../Navbar/NavContent'
 import ItemCard from '../mainpage/Content/ItemCard'
@@ -11,7 +12,7 @@ function ItemPage(){
     const [itemInfo, setItemInfo] = useState([])
     const [relatedItems, setRelatedItems] = useState([])
     const [isSaved, setIsSaved] = useState("")
-
+    const navigate = useNavigate()
   
 
         useEffect(()=>{
@@ -56,6 +57,11 @@ function ItemPage(){
         })
             setIsSaved(!isSaved)
     }
+
+    function viewSeller(){
+        localStorage.setItem('seller_selected', userInfo.id)
+        navigate('/view-seller')
+    }
     
 
     return(
@@ -87,7 +93,7 @@ function ItemPage(){
                 
                 <hr className='hr' ></hr>
 
-                <div className='seller-info'> 
+                <div className='seller-info' onClick={viewSeller}> 
                     <div className='inner-seller-info'>
                         <img className='seller-pfp' src={userInfo.profile_pic}></img>
                     </div>
