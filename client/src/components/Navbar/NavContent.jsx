@@ -30,6 +30,12 @@ console.log(user.id)
     function profile(){
         navigate('/profile')
     }
+    function savedItems(){
+        navigate('/saved-items')
+    }
+    function viewFeed(){ 
+        navigate('/feed')
+    }
     return(
         <nav className="nav">
             <div className="company-name" onClick={homePage} >
@@ -37,8 +43,8 @@ console.log(user.id)
             </div>
             <ul className="nav-links">
                 <li onClick={profile}>Profile</li>
-                {/* <li>Selling</li> */}
-                <li >Saved Items</li>
+                <li onClick={viewFeed}>My Feed</li>
+                <li onClick={savedItems}>Saved Items</li>
                 <li>Messages</li>
                 <li onClick={logout}>Logout</li>
                 {/* <li onClick={deleteAccount}>Delete account</li> */}

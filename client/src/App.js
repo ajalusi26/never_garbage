@@ -7,6 +7,8 @@ import ItemPage from './components/ItemPage/ItemPage'
 import ResetPassword from './components/accounts/ResetPassword'
 import Profile from './components/accounts/Profile';
 import OtherProfile from './components/accounts/OtherProfile';
+import SavedItems from './components/SavedItems/SavedItems';
+import Feed from './components/Feed/Feed'
 
 import './App.css';
 
@@ -20,6 +22,8 @@ function App() {
       <Route exact path={'item-page'} element={ <ItemPage/>}/>
       <Route exact path={'profile'} element={ <Profile/>}/>
       <Route exact path={'view-seller'} element={ <OtherProfile/>}/>
+      <Route exact path={'saved-items'} element={ <SavedItems/>}/>
+      <Route exact path={'feed'} element={ <Feed/>}/>
     </Routes>
   );
 }

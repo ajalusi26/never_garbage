@@ -1,0 +1,23 @@
+.feed-h1 {
+  color: black;
+  margin: 100px 0%;
+  font-size: 40px;
+  text-align: center;
+}
+.feed-container {
+  display: flex;
+  /* border-right: 1px solid var(--twitter-background); */
+  width: 1200px;
+
+  margin: auto;
+  padding-bottom: 200px;
+  /* min-width: fit-content; */
+  overflow-y: scroll;
+  /* height: 665px; */
+  align-self: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.feed-container::-webkit-scrollbar {
+  display: none;
+}

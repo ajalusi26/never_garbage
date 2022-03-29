@@ -7,6 +7,9 @@ function CreateAccount(){
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
+    const [zip, setZip] = useState("")
+    const [state, setState] = useState('')
+    const [city, setCity] = useState("")
     const [errorMessage, setErrorMessage] = useState(false)
     const navigate = useNavigate()
 
@@ -19,16 +22,37 @@ function CreateAccount(){
                 navigate('/main-page')
             }else{
                 setLoaded(true)
+                navigator.geolocation.getCurrentPosition(function(position){
+                    fetch( "https://maps.googleapis.com/maps/api/geocode/json?latlng="+ position.coords.latitude + "," + position.coords.longitude + '&key=AIzaSyAhjCcVMhl4Sc6MMootJ--iyHifcJcwBX8')
+                    .then(r=> r.json())
+                    .then(data => {
+                        setCity(data.results[0].address_components[data.results[0].address_components.length - 5 ].long_name)
+                        setState(data.results[0].address_components[data.results[0].address_components.length - 3 ].short_name)
+                        setZip(data.results[0].address_components[data.results[0].address_components.length - 1 ].long_name)
+                    })
+                })      
             }
         })
     }, [])
 
     function createAccount(e){
         e.preventDefault()
+        
+        navigator.geolocation.getCurrentPosition(function(position){
+            fetch( "https://maps.googleapis.com/maps/api/geocode/json?latlng="+ position.coords.latitude + "," + position.coords.longitude + '&key=AIzaSyAhjCcVMhl4Sc6MMootJ--iyHifcJcwBX8')
+            .then(r=> r.json())
+            .then(data => {
+                setZip(data.results[0].address_components[data.results[0].address_components.length - 1 ].long_name)
+            })
+        })      
+        
         let data = {
             name: username, 
             email: email, 
-            password: password
+            password: password,
+            zipcode: zip, 
+            state: state, 
+            city: city
         }
 
         fetch('/users',{

@@ -10,4 +10,9 @@ class SavedItemsController < ApplicationController
         render json: new_item , status: :ok
         end
     end
+
+    def destroy
+        SavedItem.find_by(item_id: params[:id]).destroy
+        render json: "bye", status: :no_content
+    end
 end

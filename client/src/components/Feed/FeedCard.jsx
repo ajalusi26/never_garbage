@@ -1,7 +1,7 @@
 import React from "react";
 import {useNavigate} from 'react-router-dom'
 
-import './ItemCard.css'
+import '../mainpage/Content/ItemCard.css'
 
 
 function ItemCard({item}){

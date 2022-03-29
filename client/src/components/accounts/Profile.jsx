@@ -52,7 +52,7 @@ function Profile(){
                 </div>
             </div>
             <hr className='pf-items-hr'></hr>
-            <h2 className='users-items-h2'> Items from this seller</h2>
+            <h2 className='users-items-h2'> My items</h2>
             <div className={userItems.length > 0 ? 'seller-items-holder-true' : 'seller-items-holder-false'} >
                    {userItems.length > 0 ? userItems.map(item => <ItemCard item={item} key={item.id}/>) : "This seller has no Items posted" }
             </div>
