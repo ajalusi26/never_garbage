@@ -36,12 +36,16 @@ console.log(user.id)
     function viewFeed(){ 
         navigate('/feed')
     }
+    function postItem(){ 
+        navigate('/post-item')
+    }
     return(
         <nav className="nav">
             <div className="company-name" onClick={homePage} >
                 <h4 >Never Trash</h4>
             </div>
             <ul className="nav-links">
+                <li onClick={postItem}>Sell</li>
                 <li onClick={profile}>Profile</li>
                 <li onClick={viewFeed}>My Feed</li>
                 <li onClick={savedItems}>Saved Items</li>

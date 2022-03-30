@@ -9,6 +9,7 @@ import Profile from './components/accounts/Profile';
 import OtherProfile from './components/accounts/OtherProfile';
 import SavedItems from './components/SavedItems/SavedItems';
 import Feed from './components/Feed/Feed'
+import PostItem from './components/PostItem/PostItem'
 
 import './App.css';
 
@@ -24,6 +25,7 @@ function App() {
       <Route exact path={'view-seller'} element={ <OtherProfile/>}/>
       <Route exact path={'saved-items'} element={ <SavedItems/>}/>
       <Route exact path={'feed'} element={ <Feed/>}/>
+      <Route exact path={'post-item'} element={ <PostItem/>}/>
     </Routes>
   );
 }

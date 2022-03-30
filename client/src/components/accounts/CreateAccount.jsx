@@ -37,15 +37,7 @@ function CreateAccount(){
 
     function createAccount(e){
         e.preventDefault()
-        
-        navigator.geolocation.getCurrentPosition(function(position){
-            fetch( "https://maps.googleapis.com/maps/api/geocode/json?latlng="+ position.coords.latitude + "," + position.coords.longitude + '&key=AIzaSyAhjCcVMhl4Sc6MMootJ--iyHifcJcwBX8')
-            .then(r=> r.json())
-            .then(data => {
-                setZip(data.results[0].address_components[data.results[0].address_components.length - 1 ].long_name)
-            })
-        })      
-        
+            
         let data = {
             name: username, 
             email: email, 

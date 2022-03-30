@@ -1,0 +1,33 @@
+.post-item-h1 {
+  font-size: 40px;
+  color: black;
+  margin: auto;
+  padding-top: 50px;
+  text-align: center;
+}
+.item-selectors {
+  width: 100%;
+  align-items: center;
+  padding: 25%;
+  padding-top: 50px;
+  margin: auto;
+  height: 100px;
+  background-color: #ffffff;
+  color: black;
+}
+.item-form {
+  /* top: 50%; */
+  margin: auto;
+  align-items: center;
+  width: 50%;
+  height: 800px;
+}
+.dropdown {
+  width: 40%;
+  margin: 0 5%;
+  /* padding: 5px; */
+  border-color: #00796b;
+  font-size: 15px;
+  font-weight: 500;
+  color: #00796b;
+}
