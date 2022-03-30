@@ -10,6 +10,18 @@ class ItemsController < ApplicationController
         render json: Item.find(params[:id]), status: :ok
     end
 
+    def create 
+        category_id = Category.find_by(name: params[:category_name]).id
+        user = User.find(session[:current_user])
+        item = Item.create!(user_id: user.id, category_id: category_id, category_name: params[:category_name], zipcode: user.zipcode, state: user.state, city: user.city, image: params[:image], name: params[:name], description: params[:description], condition: params[:condition], price: params[:price], sold: false)
+        render json: item, status: :ok
+    end
+
+    def destroy
+        item = Item.find(params[:id]).destroy
+        render json: "deleted", status: :ok
+    end
+
     def related_items
 
         is_saved = SavedItem.exists?(item_id: params[:item_id], user_id: session[:current_user])

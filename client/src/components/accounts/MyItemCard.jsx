@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom'
 import '../mainpage/Content/ItemCard.css'
 
 
-function SavedItemCard({item, update, setUpdate}){
+function MyItemCard({item, update, setUpdate}){
     const navigate = useNavigate()
 
     function itemPage(e){
@@ -16,7 +16,7 @@ function SavedItemCard({item, update, setUpdate}){
     }
 
     function remove(){
-        fetch(`/saved_items/${item.id}`, {
+        fetch(`/items/${item.id}`, {
             method: 'DELETE'
         })
         .then(r => window.location.reload())
@@ -38,4 +38,4 @@ function SavedItemCard({item, update, setUpdate}){
     )
 }
 
-export default SavedItemCard
+export default MyItemCard

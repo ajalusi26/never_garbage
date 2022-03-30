@@ -37,7 +37,7 @@ function ItemPage(){
         })
         .then(r => r.json())
         .then(data => {
-           setRelatedItems(data.items)
+           setRelatedItems(data.items.splice(0, 6))
            setIsSaved(data.saved)
            console.log("i",data)
         })

@@ -3,11 +3,13 @@ import {useState, useEffect} from 'react'
 
 import NavContent from '../Navbar/NavContent'
 import ItemCard from '../mainpage/Content/ItemCard'
+import MyItemCard from "./MyItemCard";
 import './Profile.css'
 function Profile(){
     // const [isFollowed, setIsFollowed] = useState(false)
     const [userData, setUserData] = useState([])
     const [userItems, setUsersItems] = useState([])
+    const [update, setUpdate] = useState(false)
     
     useEffect(() => {
         fetch('/user_profile')
@@ -18,7 +20,7 @@ function Profile(){
             setUsersItems(data.posted_items)
            
         })
-    }, [])
+    }, [update])
 
     // function followUser (){
     //     setIsFollowed(!isFollowed)
@@ -54,7 +56,7 @@ function Profile(){
             <hr className='pf-items-hr'></hr>
             <h2 className='users-items-h2'> My items</h2>
             <div className={userItems.length > 0 ? 'seller-items-holder-true' : 'seller-items-holder-false'} >
-                   {userItems.length > 0 ? userItems.map(item => <ItemCard item={item} key={item.id}/>) : "This seller has no Items posted" }
+                   {userItems.length > 0 ? userItems.map(item => <MyItemCard item={item} key={item.id} update={update} setUpdate={setUpdate}/>) : "This seller has no Items posted" }
             </div>
         </div>
     )
